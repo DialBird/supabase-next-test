@@ -21,11 +21,11 @@ export default async function Home() {
         </p>
       </div>
       <div>
-        <p>Supabase</p>
+        <p>Supabase:</p>
         {todos && todos.map((todo) => <p key={todo.id}>{todo.name}</p>)}
       </div>
       <div>
-        <p>Prisma</p>
+        <p>Prisma:</p>
         {todos2 && todos2.map((todo, idx) => <p key={idx}>{todo.name}</p>)}
       </div>
       <Sample />
