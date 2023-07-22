@@ -1,4 +1,5 @@
 import { Sample } from "@/components/Sample";
+import { prisma } from "@/lib/prisma";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
@@ -7,6 +8,9 @@ export const dynamic = "force-dynamic";
 export default async function Home() {
   const supabase = createServerComponentClient({ cookies });
   const { data: todos } = await supabase.from("todos").select();
+
+  const todos2 = await prisma.todos.findMany();
+  console.log("tt", todos2);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -17,7 +21,12 @@ export default async function Home() {
         </p>
       </div>
       <div>
+        <p>Supabase</p>
         {todos && todos.map((todo) => <p key={todo.id}>{todo.name}</p>)}
+      </div>
+      <div>
+        <p>Prisma</p>
+        {todos2 && todos2.map((todo) => <p key={todo.id}>{todo.name}</p>)}
       </div>
       <Sample />
     </main>
