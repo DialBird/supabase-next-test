@@ -26,7 +26,7 @@ export default async function Home() {
       </div>
       <div>
         <p>Prisma</p>
-        {todos2 && todos2.map((todo) => <p key={todo.id}>{todo.name}</p>)}
+        {todos2 && todos2.map((todo, idx) => <p key={idx}>{todo.name}</p>)}
       </div>
       <Sample />
     </main>
