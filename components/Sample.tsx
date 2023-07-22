@@ -21,7 +21,7 @@ export const Sample = () => {
         }
       )
       .subscribe();
-  }, []);
+  }, [supabase]);
   return (
     <div>
       <h1>Sample</h1>

@@ -2,6 +2,8 @@ import { Sample } from "@/components/Sample";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const supabase = createServerComponentClient({ cookies });
   const { data: todos } = await supabase.from("todos").select();
@@ -15,9 +17,7 @@ export default async function Home() {
         </p>
       </div>
       <div>
-        {todos.map((todo) => (
-          <p key={todo.id}>{todo.name}</p>
-        ))}
+        {todos && todos.map((todo) => <p key={todo.id}>{todo.name}</p>)}
       </div>
       <Sample />
     </main>
