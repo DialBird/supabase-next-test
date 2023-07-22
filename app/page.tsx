@@ -1,11 +1,10 @@
+import { Sample } from "@/components/Sample";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
 export default async function Home() {
   const supabase = createServerComponentClient({ cookies });
   const { data: todos } = await supabase.from("todos").select();
-
-  console.log("todo", todos);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -20,6 +19,7 @@ export default async function Home() {
           <p key={todo.id}>{todo.name}</p>
         ))}
       </div>
+      <Sample />
     </main>
   );
 }
